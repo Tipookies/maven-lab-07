@@ -29,10 +29,19 @@ jobs:
         run: mvn clean verify
         continue-on-error: true
 
-      - name: Publish Checkstyle report
+      - name: Run Checkstyle
+        run: mvn clean verify
+        continue-on-error: true   # cho chạy tiếp để comment
+
+      - name: Comment Checkstyle
         uses: jwgmeligmeyling/checkstyle-github-action@master
         with:
           path: target/checkstyle-result.xml
 
+      # 🔥 BẮT BUỘC phải fail lại
       - name: Fail if Checkstyle failed
-        run: mvn checkstyle:check
+        run: |
+          if grep -q "<error" target/checkstyle-result.xml; then
+            echo "Checkstyle violations found"
+            exit 1
+          fi
