@@ -29,12 +29,10 @@ jobs:
         run: mvn clean verify
         continue-on-error: true
 
-      - name: Comment Checkstyle on PR
-        uses: dorny/checkstyle-action@v1
+      - name: Publish Checkstyle report
+        uses: jwgmeligmeyling/checkstyle-github-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          checkstyle_files: target/checkstyle-result.xml
+          path: target/checkstyle-result.xml
 
       - name: Fail if Checkstyle failed
         run: mvn checkstyle:check
