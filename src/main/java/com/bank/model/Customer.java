@@ -123,4 +123,8 @@ public class Customer {
   public String getCustomerInfo() {
     return "Số CMND: " + idNumber + ". Họ tên: " + fullName + ".";
   }
+
+  public void test() {
+    System.out.println("hello xin chao");
+  }
 }
