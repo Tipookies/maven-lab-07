@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+maven-lab-06,com.bank.model,Bank,29,236,6,22,9,59,7,16,1,8
+maven-lab-06,com.bank.model,SavingsAccount,10,105,1,3,3,31,1,5,0,4
+maven-lab-06,com.bank.model,Transaction,28,86,0,5,12,23,8,7,8,3
+maven-lab-06,com.bank.model,Customer,27,61,5,3,12,16,8,7,4,7
+maven-lab-06,com.bank.model,Account,8,206,1,19,4,53,3,21,2,12
+maven-lab-06,com.bank.model,CheckingAccount,0,81,0,0,0,26,0,4,0,4
+maven-lab-06,com.bank.exception,InvalidFundingAmountException,0,20,0,0,0,2,0,1,0,1
+maven-lab-06,com.bank.exception,BankException,0,4,0,0,0,2,0,1,0,1
+maven-lab-06,com.bank.exception,InsufficientFundsException,0,22,0,0,0,2,0,1,0,1

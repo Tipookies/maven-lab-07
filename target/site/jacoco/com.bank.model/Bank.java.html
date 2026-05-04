@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="vi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Bank.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">maven-lab-06</a> &gt; <a href="index.source.html" class="el_package">com.bank.model</a> &gt; <span class="el_source">Bank.java</span></div><h1>Bank.java</h1><pre class="source lang-java linenums">package com.bank.model;
+
+import com.bank.model.CheckingAccount;
+import com.bank.model.Customer;
+import com.bank.model.SavingsAccount;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+/**
+ * Lớp quản lý danh sách khách hàng của ngân hàng.
+ */
+public class Bank {
+
+<span class="fc" id="L24">  private static final Logger LOGGER =</span>
+<span class="fc" id="L25">      LoggerFactory.getLogger(Bank.class);</span>
+
+  private List&lt;Customer&gt; customers;
+
+  /**
+   * Khởi tạo ngân hàng.
+   */
+<span class="fc" id="L32">  public Bank() {</span>
+<span class="fc" id="L33">    this.customers = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L34">  }</span>
+
+  /**
+   * Lấy danh sách khách hàng.
+   *
+   * @return danh sách khách hàng
+   */
+  public List&lt;Customer&gt; getCustomerList() {
+<span class="fc" id="L42">    return customers;</span>
+  }
+
+  /**
+   * Thiết lập danh sách khách hàng.
+   *
+   * @param customerList danh sách khách hàng
+   */
+  public void setCustomerList(List&lt;Customer&gt; customerList) {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">    if (customerList == null) {</span>
+<span class="fc" id="L52">      this.customers = new ArrayList&lt;&gt;();</span>
+    } else {
+<span class="fc" id="L54">      this.customers = customerList;</span>
+    }
+<span class="fc" id="L56">  }</span>
+
+  /**
+   * Đọc danh sách khách hàng từ InputStream.
+   *
+   * @param inputStream luồng dữ liệu đầu vào
+   */
+  public void readCustomerList(InputStream inputStream) {
+<span class="fc" id="L64">    LOGGER.debug(&quot;Bắt đầu đọc dữ liệu khách hàng&quot;);</span>
+
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    if (inputStream == null) {</span>
+<span class="fc" id="L67">      LOGGER.warn(&quot;InputStream là null&quot;);</span>
+<span class="fc" id="L68">      return;</span>
+    }
+
+<span class="fc" id="L71">    try (BufferedReader reader =</span>
+        new BufferedReader(new InputStreamReader(inputStream))) {
+
+      String line;
+<span class="fc" id="L75">      Customer currentCustomer = null;</span>
+
+<span class="fc bfc" id="L77" title="All 2 branches covered.">      while ((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L78">        line = line.trim();</span>
+
+<span class="pc bpc" id="L80" title="1 of 2 branches missed.">        if (line.isEmpty()) {</span>
+<span class="nc" id="L81">          continue;</span>
+        }
+
+<span class="fc" id="L84">        int lastSpace = line.lastIndexOf(' ');</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">        if (lastSpace &lt;= 0) {</span>
+<span class="nc" id="L86">          continue;</span>
+        }
+
+<span class="fc" id="L89">        String token = line.substring(lastSpace + 1).trim();</span>
+
+        // Nhận diện khách hàng (CMND 9 chữ số)
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if (token.matches(&quot;\\d{9}&quot;)) {</span>
+<span class="fc" id="L93">          String name = line.substring(0, lastSpace).trim();</span>
+<span class="fc" id="L94">          long id = Long.parseLong(token);</span>
+
+<span class="fc" id="L96">          currentCustomer = new Customer(id, name);</span>
+<span class="fc" id="L97">          customers.add(currentCustomer);</span>
+
+<span class="fc" id="L99">          LOGGER.debug(&quot;Thêm khách hàng: {}&quot;, name);</span>
+<span class="fc" id="L100">        } else {</span>
+          // Nhận diện tài khoản
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">          if (currentCustomer == null) {</span>
+<span class="nc" id="L103">            continue;</span>
+          }
+
+<span class="fc" id="L106">          String[] parts = line.split(&quot;\\s+&quot;);</span>
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">          if (parts.length &lt; 3) {</span>
+<span class="nc" id="L108">            continue;</span>
+          }
+
+<span class="fc" id="L111">          long accountNumber = Long.parseLong(parts[0]);</span>
+<span class="fc" id="L112">          String type = parts[1];</span>
+<span class="fc" id="L113">          double balance = Double.parseDouble(parts[2]);</span>
+
+<span class="fc bfc" id="L115" title="All 2 branches covered.">          if (&quot;CHECKING&quot;.equals(type)) {</span>
+<span class="fc" id="L116">            currentCustomer.addAccount(</span>
+                new CheckingAccount(accountNumber, balance));
+<span class="pc bpc" id="L118" title="1 of 2 branches missed.">          } else if (&quot;SAVINGS&quot;.equals(type)) {</span>
+<span class="fc" id="L119">            currentCustomer.addAccount(</span>
+                new SavingsAccount(accountNumber, balance));
+          } else {
+<span class="nc" id="L122">            LOGGER.warn(&quot;Loại tài khoản không hợp lệ: {}&quot;, type);</span>
+          }
+        }
+<span class="fc" id="L125">      }</span>
+
+<span class="nc" id="L127">    } catch (IOException e) {</span>
+<span class="nc" id="L128">      LOGGER.error(&quot;Lỗi khi đọc dữ liệu: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L129">    }</span>
+<span class="fc" id="L130">  }</span>
+
+  /**
+   * Lấy thông tin khách hàng theo thứ tự CMND.
+   *
+   * @return chuỗi thông tin khách hàng
+   */
+  public String getCustomersInfoByIdOrder() {
+<span class="fc" id="L138">    customers.sort(Comparator.comparingLong(Customer::getIdNumber));</span>
+
+<span class="fc" id="L140">    StringBuilder result = new StringBuilder();</span>
+
+<span class="fc bfc" id="L142" title="All 2 branches covered.">    for (int i = 0; i &lt; customers.size(); i++) {</span>
+<span class="fc" id="L143">      result.append(customers.get(i).getCustomerInfo());</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">      if (i &lt; customers.size() - 1) {</span>
+<span class="fc" id="L145">        result.append(&quot;\n&quot;);</span>
+      }
+    }
+
+<span class="fc" id="L149">    return result.toString();</span>
+  }
+
+  /**
+   * Lấy thông tin khách hàng theo thứ tự tên.
+   *
+   * @return chuỗi thông tin khách hàng
+   */
+  public String getCustomersInfoByNameOrder() {
+<span class="fc" id="L158">    List&lt;Customer&gt; sortedList = new ArrayList&lt;&gt;(customers);</span>
+
+<span class="fc" id="L160">    sortedList.sort((c1, c2) -&gt; {</span>
+<span class="fc" id="L161">      int result = c1.getFullName().compareTo(c2.getFullName());</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">      if (result != 0) {</span>
+<span class="fc" id="L163">        return result;</span>
+      }
+<span class="nc" id="L165">      return Long.compare(c1.getIdNumber(), c2.getIdNumber());</span>
+    });
+
+<span class="fc" id="L168">    StringBuilder result = new StringBuilder();</span>
+
+<span class="fc bfc" id="L170" title="All 2 branches covered.">    for (Customer customer : sortedList) {</span>
+<span class="fc" id="L171">      result.append(customer.getCustomerInfo()).append(&quot;\n&quot;);</span>
+<span class="fc" id="L172">    }</span>
+
+<span class="fc" id="L174">    return result.toString().trim();</span>
+  }
+
+  public Path getDataFilePath() {
+<span class="nc" id="L178">    return Paths.get(&quot;data&quot;, &quot;customers.txt&quot;);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,30 @@
+name: Code Review with Checkstyle
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  checkstyle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+
+      - name: Run Checkstyle
+        run: mvn clean verify
+
+      - name: Comment Checkstyle on PR
+        uses: dorny/checkstyle-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          checkstyle_files: target/checkstyle-result.xml

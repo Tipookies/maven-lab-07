@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.bank.model.AccountExtraTest" time="0.296" tests="6" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1258"/>
+    <property name="java.class.path" value="D:\TranDanhThang_25020402_Week9\Bai07\target\test-classes;D:\TranDanhThang_25020402_Week9\Bai07\target\classes;C:\Users\dahnwni\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\dahnwni\.m2\repository\ch\qos\logback\logback-classic\1.2.13\logback-classic-1.2.13.jar;C:\Users\dahnwni\.m2\repository\ch\qos\logback\logback-core\1.2.13\logback-core-1.2.13.jar;C:\Users\dahnwni\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.2\junit-jupiter-5.9.2.jar;C:\Users\dahnwni\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\dahnwni\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\dahnwni\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\dahnwni\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dahnwni\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.2\junit-jupiter-params-5.9.2.jar;C:\Users\dahnwni\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\dahnwni\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Saigon"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="VN"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-25.0.2\bin"/>
+    <property name="sun.java.command" value="C:\Users\dahnwni\AppData\Local\Temp\surefire5769494903313934373\surefirebooter-20260504150653411_3.jar C:\Users\dahnwni\AppData\Local\Temp\surefire5769494903313934373 2026-05-04T15-06-53_296-jvmRun1 surefire-20260504150653411_1tmp surefire_0-20260504150653411_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\TranDanhThang_25020402_Week9\Bai07\target\test-classes;D:\TranDanhThang_25020402_Week9\Bai07\target\classes;C:\Users\dahnwni\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\dahnwni\.m2\repository\ch\qos\logback\logback-classic\1.2.13\logback-classic-1.2.13.jar;C:\Users\dahnwni\.m2\repository\ch\qos\logback\logback-core\1.2.13\logback-core-1.2.13.jar;C:\Users\dahnwni\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.2\junit-jupiter-5.9.2.jar;C:\Users\dahnwni\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\dahnwni\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\dahnwni\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\dahnwni\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dahnwni\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.2\junit-jupiter-params-5.9.2.jar;C:\Users\dahnwni\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\dahnwni\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\dahnwni"/>
+    <property name="user.language" value="vi"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-01-20"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-25.0.2"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\TranDanhThang_25020402_Week9\Bai07"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\dahnwni\AppData\Local\Temp\surefire5769494903313934373\surefirebooter-20260504150653411_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.2+10-LTS-69"/>
+    <property name="user.name" value="dahnwni"/>
+    <property name="stdout.encoding" value="Cp1258"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\dahnwni\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\dahnwni\AppData\Local\Temp\"/>
+    <property name="java.version" value="25.0.2"/>
+    <property name="user.dir" value="D:\TranDanhThang_25020402_Week9\Bai07"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1258"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-25.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Java\jdk-25.0.2\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;D:\bin;D:\Maven\apache-maven-3.9.14\bin;C:\Users\dahnwni\AppData\Local\Microsoft\WindowsApps;;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1258"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.0.2+10-LTS-69"/>
+    <property name="stdin.encoding" value="Cp1258"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="testSetTransactionListWithNull" classname="com.bank.model.AccountExtraTest" time="0.236"/>
+  <testcase name="testSetTransactionList" classname="com.bank.model.AccountExtraTest" time="0.006"/>
+  <testcase name="testCheckingInvalidWithdraw" classname="com.bank.model.AccountExtraTest" time="0.017">
+    <system-out><![CDATA[15:06:54 [WARN] com.bank.model.Account - Số tiền rút không hợp lệ: -100.0
+15:06:54 [DEBUG] com.bank.model.CheckingAccount - Lỗi khi rút tiền: Số tiền không hợp lệ: $-100.00
+]]></system-out>
+  </testcase>
+  <testcase name="testCheckingTransactionHistory" classname="com.bank.model.AccountExtraTest" time="0.003">
+    <system-out><![CDATA[15:06:54 [INFO] com.bank.model.Account - Nạp tiền thành công: tài khoản 1001, số tiền 500.0
+15:06:54 [DEBUG] com.bank.model.CheckingAccount - Nạp tiền thành công: tài khoản 1001, số tiền 500.0
+15:06:54 [INFO] com.bank.model.Account - Rút tiền thành công: tài khoản 1001, số tiền 300.0
+15:06:54 [DEBUG] com.bank.model.CheckingAccount - Rút tiền thành công: tài khoản 1001, số tiền 300.0
+15:06:54 [INFO] com.bank.model.Account - Đã lấy lịch sử giao dịch của tài khoản 1001
+]]></system-out>
+  </testcase>
+  <testcase name="testEqualsAndHashCode" classname="com.bank.model.AccountExtraTest" time="0.001"/>
+  <testcase name="testCheckingInvalidDeposit" classname="com.bank.model.AccountExtraTest" time="0.004">
+    <system-out><![CDATA[15:06:54 [WARN] com.bank.model.Account - Số tiền nạp không hợp lệ: -100.0
+15:06:54 [DEBUG] com.bank.model.CheckingAccount - Lỗi khi nạp tiền: Số tiền không hợp lệ: $-100.00
+]]></system-out>
+  </testcase>
+</testsuite>

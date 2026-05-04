@@ -118,6 +118,10 @@
                     <failsOnError>true</failsOnError>
                     <failOnViolation>true</failOnViolation>
                     <violationSeverity>error</violationSeverity>
+
+                    <!-- Quan trọng: tạo file XML để GitHub Action đọc và comment -->
+                    <outputFile>target/checkstyle-result.xml</outputFile>
+                    <outputFileFormat>xml</outputFileFormat>
                 </configuration>
 
                 <executions>

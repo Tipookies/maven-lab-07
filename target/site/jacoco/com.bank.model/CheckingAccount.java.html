@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="vi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CheckingAccount.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">maven-lab-06</a> &gt; <a href="index.source.html" class="el_package">com.bank.model</a> &gt; <span class="el_source">CheckingAccount.java</span></div><h1>CheckingAccount.java</h1><pre class="source lang-java linenums">package com.bank.model;
+
+import com.bank.exception.BankException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Lớp đại diện cho tài khoản vãng lai (Checking Account).
+ */
+public class CheckingAccount extends Account {
+
+<span class="fc" id="L12">  private static final Logger LOGGER =</span>
+<span class="fc" id="L13">      LoggerFactory.getLogger(CheckingAccount.class);</span>
+
+  /**
+   * Khởi tạo tài khoản vãng lai.
+   *
+   * @param accountNumber số tài khoản
+   * @param balance số dư ban đầu
+   */
+  public CheckingAccount(long accountNumber, double balance) {
+<span class="fc" id="L22">    super(accountNumber, balance);</span>
+<span class="fc" id="L23">  }</span>
+
+  /**
+   * Nạp tiền vào tài khoản.
+   *
+   * @param amount số tiền nạp
+   */
+  @Override
+  public void deposit(double amount) {
+<span class="fc" id="L32">    double initialBalance = getBalance();</span>
+
+    try {
+<span class="fc" id="L35">      doDepositing(amount);</span>
+<span class="fc" id="L36">      double finalBalance = getBalance();</span>
+
+<span class="fc" id="L38">      Transaction transaction = new Transaction(</span>
+          Transaction.TYPE_DEPOSIT_CHECKING,
+          amount,
+          initialBalance,
+          finalBalance);
+
+<span class="fc" id="L44">      addTransaction(transaction);</span>
+
+<span class="fc" id="L46">      LOGGER.debug(&quot;Nạp tiền thành công: tài khoản {}, số tiền {}&quot;,</span>
+<span class="fc" id="L47">          getAccountNumber(), amount);</span>
+
+<span class="fc" id="L49">    } catch (BankException e) {</span>
+<span class="fc" id="L50">      LOGGER.debug(&quot;Lỗi khi nạp tiền: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L51">    }</span>
+<span class="fc" id="L52">  }</span>
+
+  /**
+   * Rút tiền khỏi tài khoản.
+   *
+   * @param amount số tiền rút
+   */
+  @Override
+  public void withdraw(double amount) {
+<span class="fc" id="L61">    double initialBalance = getBalance();</span>
+
+    try {
+<span class="fc" id="L64">      doWithdrawing(amount);</span>
+<span class="fc" id="L65">      double finalBalance = getBalance();</span>
+
+<span class="fc" id="L67">      Transaction transaction = new Transaction(</span>
+          Transaction.TYPE_WITHDRAW_CHECKING,
+          amount,
+          initialBalance,
+          finalBalance);
+
+<span class="fc" id="L73">      addTransaction(transaction);</span>
+
+<span class="fc" id="L75">      LOGGER.debug(&quot;Rút tiền thành công: tài khoản {}, số tiền {}&quot;,</span>
+<span class="fc" id="L76">          getAccountNumber(), amount);</span>
+
+<span class="fc" id="L78">    } catch (BankException e) {</span>
+<span class="fc" id="L79">      LOGGER.debug(&quot;Lỗi khi rút tiền: {}&quot;, e.getMessage());</span>
+<span class="fc" id="L80">    }</span>
+<span class="fc" id="L81">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

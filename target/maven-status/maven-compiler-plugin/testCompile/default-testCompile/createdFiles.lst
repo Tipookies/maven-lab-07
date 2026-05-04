@@ -1,0 +1,7 @@
+com\bank\model\SavingsAccountTest.class
+com\bank\model\AccountExtraTest.class
+com\bank\model\CustomerTest.class
+com\bank\model\FilePathTest.class
+com\bank\model\TransactionTest.class
+com\bank\model\CheckingAccountTest.class
+com\bank\model\BankTest.class
