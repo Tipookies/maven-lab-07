@@ -124,5 +124,7 @@ public class Customer {
     return "Số CMND: " + idNumber + ". Họ tên: " + fullName + ".";
   }
 
-    public void test(){System.out.println("hello xin chao");}
+  public void test() {
+    System.out.println("hello xin chao");
+  }
 }
