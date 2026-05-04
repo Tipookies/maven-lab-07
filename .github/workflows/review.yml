@@ -5,22 +5,29 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
 jobs:
   checkstyle:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '8'
+          cache: maven
 
       - name: Run Checkstyle
         run: mvn clean verify
+        continue-on-error: true
 
       - name: Comment Checkstyle on PR
         uses: dorny/checkstyle-action@v1
@@ -28,3 +35,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
           checkstyle_files: target/checkstyle-result.xml
+
+      - name: Fail if Checkstyle failed
+        run: mvn checkstyle:check
